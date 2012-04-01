@@ -30,3 +30,13 @@
   color: white;
   text-shadow: #b92724 0 -1px 0;
 }
+
+#index ul li:not(.search){
+  background-image: none;
+  background-color: #444444;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6a6a6a), color-stop(50%, #515151), color-stop(51%, #444444), color-stop(100%, #373737));
+  background-image: -webkit-linear-gradient(top, #6a6a6a, #515151 50%, #444444 51%, #373737);
+  background-image: linear-gradient(top, #6a6a6a, #515151 50%, #444444 51%, #373737);
+  color: white;
+  text-shadow: #2b2b2b 0 -1px 0;
+}

@@ -25,7 +25,7 @@
     },
     
     filter: function() {
-      if (this.field.val().trim() == '') { this.list.children('li').show(); return; }
+      if (this.field.val().trim() == '') { this.list.children('li.searchable').show(); return; }
       this.displayResults(this.getScores(this.field.val().toLowerCase()));
     },
     
@@ -42,7 +42,7 @@
     
     displayResults: function(scores) {
       var self = this;
-      this.list.children('li.searchable').hide();
+      this.list.children('li.searchable, li.non-searchable').hide();
       $.each(scores, function(i, score) { self.rows[score[1]].show(); });
     },
     

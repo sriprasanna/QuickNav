@@ -27,7 +27,6 @@ window.LocationListItemView = Backbone.View.extend({
   },
   render: function(eventName){
     var $el = $(this.el);
-    $el.data("name", this.model.get('name'));
     $el.data("id", this.model.get('id'));
     $el.html(this.model.get('name'));
     return this;

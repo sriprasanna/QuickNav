@@ -17,7 +17,7 @@ var QuickNav = Backbone.Router.extend({
     "locations/:id/delete": "deleteLocation"
   },
   _openLocation: function(from, to){
-    // alert("From: " + from + " | To: " + to);
+    alert("From: " + from + " | To: " + to);
   },
   _bindTapEvents: function(){
     var $index = $("#index");
@@ -53,7 +53,12 @@ var QuickNav = Backbone.Router.extend({
     });
   },
   _bindSearch: function(){
-    $('#search').liveUpdate('locations');
+    var $nonSearchable = $(".current-location, .quick-location, .toolbar");
+    $('#search').liveUpdate('locations').focus(function(){
+      $nonSearchable.hide();
+    }).blur(function(){
+      $nonSearchable.show().find("input");
+    });
   },
   index: function(){
     this.before(function(){
