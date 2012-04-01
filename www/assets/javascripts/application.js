@@ -32,7 +32,8 @@ var QuickNav = Backbone.Router.extend({
           break;
       }
     });
-    alert("From: " + locations["from"] + " | To: " + locations["to"]);
+    var url = "http://maps.google.com/maps?saddr="+ window.encodeURIComponent(locations["from"]) +"&daddr="+ window.encodeURIComponent(locations["to"]);
+    window.location = url;
   },
   _bindTapEvents: function(){
     var $index = $("#index");

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0505A31528E09900FADA57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0505A21528E09900FADA57 /* MapKit.framework */; };
 		9B2174DF15276730009F3495 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2174DE15276730009F3495 /* Foundation.framework */; };
 		9B2174E115276730009F3495 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2174E015276730009F3495 /* UIKit.framework */; };
 		9B2174E315276730009F3495 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2174E215276730009F3495 /* CoreGraphics.framework */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B0505A21528E09900FADA57 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9B2174DA15276730009F3495 /* QuickNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2174DE15276730009F3495 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B2174E015276730009F3495 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0505A31528E09900FADA57 /* MapKit.framework in Frameworks */,
 				9B2174DF15276730009F3495 /* Foundation.framework in Frameworks */,
 				9B2174E115276730009F3495 /* UIKit.framework in Frameworks */,
 				9B2174E315276730009F3495 /* CoreGraphics.framework in Frameworks */,
@@ -117,6 +120,7 @@
 		9B2174CC15276730009F3495 = {
 			isa = PBXGroup;
 			children = (
+				9B0505A21528E09900FADA57 /* MapKit.framework */,
 				9B217536152767AE009F3495 /* www */,
 				9B2174F815276730009F3495 /* QuickNav */,
 				9B2174DD15276730009F3495 /* Frameworks */,
@@ -484,6 +488,7 @@
 					"CORDOVA_FRAMEWORK=1",
 				);
 				INFOPLIST_FILE = "QuickNav/QuickNav-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					UIKit,
@@ -516,6 +521,7 @@
 					"CORDOVA_FRAMEWORK=1",
 				);
 				INFOPLIST_FILE = "QuickNav/QuickNav-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					UIKit,
