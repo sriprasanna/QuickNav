@@ -13,7 +13,8 @@ var QuickNav = Backbone.Router.extend({
     "locations/edit": "editLocations",
     "locations/create": "createLocation",
     "locations/:id": "show",
-    "locations/:id/update": "updateLocation"
+    "locations/:id/update": "updateLocation",
+    "locations/:id/delete": "deleteLocation"
   },
   index: function(){
     this.before(function(){
@@ -56,6 +57,20 @@ var QuickNav = Backbone.Router.extend({
         address: $("#address").val()
       });
       location.save([], {
+        success: function(){
+          app.locations.fetch();
+          app.navigate("#locations/edit", true);
+        },
+        error: function(x){
+          alert(x);
+        }
+      });
+    });
+  },
+  deleteLocation: function(id){
+    this.before(function(){
+      var location = app.locations.get(id);
+      location.destroy({
         success: function(){
           app.locations.fetch();
           app.navigate("#locations/edit", true);

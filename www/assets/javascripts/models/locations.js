@@ -50,7 +50,16 @@ _.extend(window.LocationDAO.prototype, {
   },
 
   destroy:function (model, callback) {
-
+    db.transaction(function(tx){
+      var sql = 'DELETE FROM locations WHERE id = ?';
+      tx.executeSql(sql, [model.escape('id')]);
+    },
+    function(tx, error){
+      alert('Transaction error - Creating record ' + error);
+    },
+    function(tx){
+      callback();
+    });
   },
 
   find:function (model, callback) {
