@@ -10,3 +10,23 @@
 .hide{
   display: none !important;
 }
+
+#index ul li.selected.from{
+  background-image: none;
+  background-color: #3c8101;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5fcd01), color-stop(50%, #479b01), color-stop(51%, #3c8101), color-stop(100%, #306801));
+  background-image: -webkit-linear-gradient(top, #5fcd01, #479b01 50%, #3c8101 51%, #306801);
+  background-image: linear-gradient(top, #5fcd01, #479b01 50%, #3c8101 51%, #306801);
+  color: white;
+  text-shadow: #244f00 0 -1px 0;
+}
+
+#index ul li.selected.to{
+  background-image: none;
+  background-color: #d83b38;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e57a78), color-stop(50%, #dc504d), color-stop(51%, #d83b38), color-stop(100%, #ce2c28));
+  background-image: -webkit-linear-gradient(top, #e57a78, #dc504d 50%, #d83b38 51%, #ce2c28);
+  background-image: linear-gradient(top, #e57a78, #dc504d 50%, #d83b38 51%, #ce2c28);
+  color: white;
+  text-shadow: #b92724 0 -1px 0;
+}

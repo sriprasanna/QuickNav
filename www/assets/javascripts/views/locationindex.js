@@ -21,12 +21,14 @@ window.LocationIndexView = Backbone.View.extend({
 window.LocationListItemView = Backbone.View.extend({
   tagName: 'li',
   initialize: function(){
-    this.template = _.template(Template.get('location-list-item'));
     this.model.bind("change", this.render, this);
     this.model.bind("destroy", this.render, this);
   },
   render: function(eventName){
-    $(this.el).html(this.template(this.model.toJSON()));
+    var $el = $(this.el);
+    $el.data("name", this.model.get('name'));
+    $el.data("id", this.model.get('id'));
+    $el.html(this.model.get('name'));
     return this;
   }
 });

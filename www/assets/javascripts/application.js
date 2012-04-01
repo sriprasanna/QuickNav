@@ -16,9 +16,46 @@ var QuickNav = Backbone.Router.extend({
     "locations/:id/update": "updateLocation",
     "locations/:id/delete": "deleteLocation"
   },
+  _openLocation: function(from, to){
+    // alert("From: " + from + " | To: " + to);
+  },
+  _bindTapEvents: function(){
+    var $index = $("#index");
+    $("li", $index).tap(function(){
+      var $selected = $(".selected", $index),
+          $from     = $(".from.selected", $index),
+          $to       = $(".to.selected", $index),
+          $el       = $(this);
+          
+      if ($selected.length == 2) return;
+      console.log($el.attr("class"));
+      if ($el.hasClass("selected")) {
+        if ($el.hasClass("from")) $to.removeClass("to").addClass("from");
+        if ($el.hasClass("to")) $from.removeClass("from").addClass("to");
+        $el.removeClass("from").removeClass("to").removeClass("selected");
+      }else{
+        if ($from.length == 0) 
+          $el.addClass("selected from");
+        else
+          $el.addClass("selected to");
+      }
+      console.log($el.attr("class"));
+      
+      $selected = $(".selected", $index);
+      if ($selected.length == 2) {
+        $from     = $(".from.selected", $index).data("id");
+        $to       = $(".to.selected", $index).data("id");
+        window.setTimeout(function(){
+          $selected.removeClass("from").removeClass("to").removeClass("selected");
+          app._openLocation($from, $to);
+        }, 200);
+      };
+    });
+  },
   index: function(){
     this.before(function(){
       app.showView(new LocationIndexView({collection: app.locations}));
+      app._bindTapEvents();
     });
   },
   show: function(id){
@@ -108,7 +145,7 @@ function start(){
   window.db = window.openDatabase("QuickNav", "1.0", "QuickNav DB", 200000);
   var locationDAO = new LocationDAO(self.db);
   locationDAO.populate(function(){
-    Template.loadTemplates(['index', 'show', 'location-list-item', 'new', 'edit', 'location-edit-list-item'], function(){
+    Template.loadTemplates(['index', 'show', 'new', 'edit', 'location-edit-list-item'], function(){
       app = new QuickNav();
       Backbone.history.start();
     });
