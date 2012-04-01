@@ -20,6 +20,7 @@ window.LocationIndexView = Backbone.View.extend({
 
 window.LocationListItemView = Backbone.View.extend({
   tagName: 'li',
+  className: 'searchable',
   initialize: function(){
     this.model.bind("change", this.render, this);
     this.model.bind("destroy", this.render, this);

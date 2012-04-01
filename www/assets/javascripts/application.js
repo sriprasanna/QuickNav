@@ -21,7 +21,7 @@ var QuickNav = Backbone.Router.extend({
   },
   _bindTapEvents: function(){
     var $index = $("#index");
-    $("li", $index).tap(function(){
+    $("li:not(.search)", $index).tap(function(){
       var $selected = $(".selected", $index),
           $from     = $(".from.selected", $index),
           $to       = $(".to.selected", $index),
@@ -52,10 +52,14 @@ var QuickNav = Backbone.Router.extend({
       };
     });
   },
+  _bindSearch: function(){
+    $('#search').liveUpdate('locations');
+  },
   index: function(){
     this.before(function(){
       app.showView(new LocationIndexView({collection: app.locations}));
       app._bindTapEvents();
+      app._bindSearch();
     });
   },
   show: function(id){
