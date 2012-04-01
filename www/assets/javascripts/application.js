@@ -17,7 +17,22 @@ var QuickNav = Backbone.Router.extend({
     "locations/:id/delete": "deleteLocation"
   },
   _openLocation: function(from, to){
-    alert("From: " + from + " | To: " + to);
+    var locations = {from: from, to: to};
+    $.each(["from", "to"], function(){
+      switch(locations[this]){
+        case "0":
+          locations[this] = "Current Location";
+          break;
+        case "null":
+          locations[this] = $("#quick-search").val();
+          $("#quick-search").val("");
+          break;
+        default:
+          locations[this] = app.locations.get(locations[this]).get('address');
+          break;
+      }
+    });
+    alert("From: " + locations["from"] + " | To: " + locations["to"]);
   },
   _bindTapEvents: function(){
     var $index = $("#index");
@@ -28,6 +43,8 @@ var QuickNav = Backbone.Router.extend({
           $el       = $(this);
           
       if ($selected.length == 2) return;
+      if (document.activeElement == $("#quick-search")[0]) return;
+      if ($el.hasClass('quick-location') && $("#quick-search").val().length == 0) return;
       console.log($el.attr("class"));
       if ($el.hasClass("selected")) {
         if ($el.hasClass("from")) $to.removeClass("to").addClass("from");
@@ -60,11 +77,21 @@ var QuickNav = Backbone.Router.extend({
       $nonSearchable.show().find("input");
     });
   },
+  _bindQuickLocation: function(){
+    $("#quick-search").focus(function(){
+      $(this).closest('li').removeClass("selected from to");
+    }).blur(function(){
+      if (this.value.length > 0) {
+        $(this).closest('li').trigger('tap');
+      };
+    });
+  },
   index: function(){
     this.before(function(){
       app.showView(new LocationIndexView({collection: app.locations}));
       app._bindTapEvents();
       app._bindSearch();
+      app._bindQuickLocation();
     });
   },
   show: function(id){
