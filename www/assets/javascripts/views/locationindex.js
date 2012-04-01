@@ -9,7 +9,7 @@ window.LocationIndexView = Backbone.View.extend({
   render: function(eventName){
     $(this.el).html(this.template());
     var ul = $('ul', $(this.el));
-    _.each(this.model.models, function(wine){
+    _.each(this.model.models, function(location){
       ul.append(new LocationListItemView({model: location}).render().el);
     }, this);
     return this;

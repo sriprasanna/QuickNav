@@ -9,12 +9,17 @@ Backbone.View.prototype.close = function () {
 var QuickNav = Backbone.Router.extend({
   routes: {
     "": "index",
-    "location/:id": "show",
-    "location/new": "newLocation"
+    "locations/:id": "show",
+    "locations/new": "newLocation"
   },
   index: function(){
     this.before(function(){
-      app.showView(new LocationIndexView({model: app.locations}));
+      try{
+        app.showView(new LocationIndexView({model: app.locations}));
+      }catch(e){
+        console.log(e)
+      }
+      
     });
   },
   show: function(id){
@@ -28,7 +33,7 @@ var QuickNav = Backbone.Router.extend({
       app.showView(new NewLocationView());
     });
   },
-  showView: function(){
+  showView: function(view){
     if (this.currentView)
       this.currentView.close();
     $('body').html(view.render().el);

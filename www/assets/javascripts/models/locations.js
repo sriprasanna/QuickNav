@@ -49,6 +49,7 @@ _.extend(window.LocationDAO.prototype, {
                 "name VARCHAR(50), " +
                 "address TEXT)";
         tx.executeSql(sql);
+        tx.executeSql("INSERT INTO locations VALUES (1,'Home','dlf phase 5, gurgaon')");
       },
       function (tx, error) {
         alert('Transaction error - Creating tables ' + error);
