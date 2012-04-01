@@ -14,9 +14,19 @@ var QuickNav = Backbone.Router.extend({
     "locations/create": "createLocation",
     "locations/:id": "show"
   },
+  _toggleListClasses: function(){
+    var $locations = $("#locations");
+    $locations.find("li").toggleClass("arrow");
+    $locations.find("span").toggleClass("hide");
+    $locations.find("a").toggleClass("hide");
+  },
   index: function(){
     this.before(function(){
-      app.showView(new LocationIndexView({collection: app.locations}));
+      if (!app.fromEditView){
+        app.fromEditView = false;
+        app.showView(new LocationIndexView({collection: app.locations}));
+      }
+      app._toggleListClasses();
     });
   },
   show: function(id){
@@ -24,6 +34,18 @@ var QuickNav = Backbone.Router.extend({
       var location = app.locations.get(id);
       app.showView(new LocationView({model: location}));
     });
+  },
+  editLocation: function(){
+    var $editButton = $("#edit-button");
+    $editButton.toggleClass("active");
+    app._toggleListClasses();
+    if ($editButton.hasClass("active")){
+      app.fromEditView = true;
+      $editButton.attr("href", "");
+    }
+    else{
+      $editButton.attr("href", "locations/edit");
+    }
   },
   newLocation: function(){
     this.before(function(){

@@ -7,7 +7,7 @@ _.extend(window.LocationDAO.prototype, {
   findAll:function (callback) {
     db.transaction(
       function (tx) {
-        var sql = "SELECT * FROM locations";
+        var sql = "SELECT * FROM locations ORDER BY name";
         tx.executeSql(sql, [], function (tx, results) {
           var len = results.rows.length;
           var locations = [];
