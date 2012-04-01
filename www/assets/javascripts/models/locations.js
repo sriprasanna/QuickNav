@@ -26,7 +26,7 @@ _.extend(window.LocationDAO.prototype, {
   create:function (model, callback) {
     db.transaction(function(tx){
       var sql = 'INSERT INTO locations (name, address) VALUES (?, ?)';
-      tx.executeSql(sql, [model.get('name'), model.get('address')]);
+      tx.executeSql(sql, [model.escape('name'), model.escape('address')]);
     },
     function(tx, error){
       alert('Transaction error - Creating record ' + error);
@@ -37,7 +37,16 @@ _.extend(window.LocationDAO.prototype, {
   },
 
   update:function (model, callback) {
-
+    db.transaction(function(tx){
+      var sql = 'UPDATE locations SET name = ?, address = ? WHERE id = ?';
+      tx.executeSql(sql, [model.escape('name'), model.escape('address'), model.escape('id')]);
+    },
+    function(tx, error){
+      alert('Transaction error - Creating record ' + error);
+    },
+    function(tx){
+      callback();
+    });
   },
 
   destroy:function (model, callback) {

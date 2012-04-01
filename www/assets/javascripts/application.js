@@ -10,23 +10,14 @@ var QuickNav = Backbone.Router.extend({
   routes: {
     "": "index",
     "locations/new": "newLocation",
-    "locations/edit": "editLocation",
+    "locations/edit": "editLocations",
     "locations/create": "createLocation",
-    "locations/:id": "show"
-  },
-  _toggleListClasses: function(){
-    var $locations = $("#locations");
-    $locations.find("li").toggleClass("arrow");
-    $locations.find("span").toggleClass("hide");
-    $locations.find("a").toggleClass("hide");
+    "locations/:id": "show",
+    "locations/:id/update": "updateLocation"
   },
   index: function(){
     this.before(function(){
-      if (!app.fromEditView){
-        app.fromEditView = false;
-        app.showView(new LocationIndexView({collection: app.locations}));
-      }
-      app._toggleListClasses();
+      app.showView(new LocationIndexView({collection: app.locations}));
     });
   },
   show: function(id){
@@ -35,17 +26,10 @@ var QuickNav = Backbone.Router.extend({
       app.showView(new LocationView({model: location}));
     });
   },
-  editLocation: function(){
-    var $editButton = $("#edit-button");
-    $editButton.toggleClass("active");
-    app._toggleListClasses();
-    if ($editButton.hasClass("active")){
-      app.fromEditView = true;
-      $editButton.attr("href", "");
-    }
-    else{
-      $editButton.attr("href", "locations/edit");
-    }
+  editLocations: function(){
+    this.before(function(){
+      app.showView(new LocationsEditView({collection: app.locations}));
+    });
   },
   newLocation: function(){
     this.before(function(){
@@ -56,22 +40,37 @@ var QuickNav = Backbone.Router.extend({
     var location = new Location({name: $("#name").val(), address: $("#address").val()});
     location.save([], {
       success: function(){
-        app.navigate("", true);
         app.locations.fetch();
+        app.navigate("", true);
       },
       error: function(x){
         alert(x);
       }
     });
   },
-  updateLocation: function(){
-    alert(name);
-    alert(address);
+  updateLocation: function(id){
+    this.before(function(){
+      var location = app.locations.get(id);
+      location.set({
+        name: $("#name").val(),
+        address: $("#address").val()
+      });
+      location.save([], {
+        success: function(){
+          app.locations.fetch();
+          app.navigate("#locations/edit", true);
+        },
+        error: function(x){
+          alert(x);
+        }
+      });
+    });
   },
   showView: function(view){
     if (this.currentView)
       this.currentView.close();
-    $('#jqt').html(view.render().el);
+    var renderedHTML = $(view.render().el);
+    $('#jqt').html(renderedHTML);
     this.currentView = view;
     return view;
   },
@@ -94,7 +93,7 @@ function start(){
   window.db = window.openDatabase("QuickNav", "1.0", "QuickNav DB", 200000);
   var locationDAO = new LocationDAO(self.db);
   locationDAO.populate(function(){
-    Template.loadTemplates(['index', 'show', 'location-list-item', 'new'], function(){
+    Template.loadTemplates(['index', 'show', 'location-list-item', 'new', 'edit', 'location-edit-list-item'], function(){
       app = new QuickNav();
       Backbone.history.start();
     });

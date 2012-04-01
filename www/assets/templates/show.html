@@ -1,16 +1,13 @@
-<form action="#locations/<%= id %>/update" method="post" accept-charset="utf-8">
-  <div class="toolbar">
-    <a href="#" class="back">Back</a>
-    <h1>QuickNav</h1>
-  </div>
-  <ul class="rounded">
-    <li>
-      <input type="text" name="name" value="<%= name %>" placeholder="Name">
-    </li>
-    <li>
-      <input type="text" name="address" value="<%= address %>" placeholder="Address">
-    </li>
-  </ul>
-  <a class="whiteButton submit">Save</a>
-  <a href="#" class="redButton goback">Cancel</a>
-</form>
+<div class="toolbar">
+  <a href="#locations/edit" class="back">Back</a>
+  <h1>QuickNav</h1>
+</div>
+<ul class="rounded">
+  <li>
+    <input type="text" id="name" placeholder="Name" value="<%= name %>">
+  </li>
+  <li>
+    <input type="text" id="address" placeholder="Address" value="<%= address %>">
+  </li>
+</ul>
+<a class="whiteButton submit" href="#locations/<%= id %>/update">Update</a>

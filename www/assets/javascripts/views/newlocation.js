@@ -1,6 +1,6 @@
 window.NewLocationView = Backbone.View.extend({
   id: "new",
-  className: "current slideup in",
+  className: "current", //"current slideup in",
   initialize: function(){
     this.template = _.template(Template.get('new'));
   },
