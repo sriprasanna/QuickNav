@@ -24,7 +24,16 @@ _.extend(window.LocationDAO.prototype, {
   },
 
   create:function (model, callback) {
-
+    db.transaction(function(tx){
+      var sql = 'INSERT INTO locations (name, address) VALUES (?, ?)';
+      tx.executeSql(sql, [model.get('name'), model.get('address')]);
+    },
+    function(tx, error){
+      alert('Transaction error - Creating record ' + error);
+    },
+    function(tx){
+      callback();
+    });
   },
 
   update:function (model, callback) {

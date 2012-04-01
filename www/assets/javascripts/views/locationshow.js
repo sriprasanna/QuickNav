@@ -1,4 +1,6 @@
 window.LocationView = Backbone.View.extend({
+  id: "show",
+  className: "current slideleft in",
   initialize: function(){
     this.template = _.template(Template.get('show'));
   },

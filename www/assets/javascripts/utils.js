@@ -20,3 +20,12 @@ window.Template = {
     return this.templates[name];
   }
 };
+
+function _try (_function) {
+  try{
+    _function();
+  }catch(e){
+    console.log(e);
+    alert(e.message);
+  }
+}

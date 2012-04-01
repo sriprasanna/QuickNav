@@ -1,0 +1,8 @@
+/*Bug fix for input disabled issue*/
+#jqt .in:after{
+  content: none;
+}
+
+#new .submit{
+  margin-bottom: 20px;
+}

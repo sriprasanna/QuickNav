@@ -9,17 +9,14 @@ Backbone.View.prototype.close = function () {
 var QuickNav = Backbone.Router.extend({
   routes: {
     "": "index",
-    "locations/:id": "show",
-    "locations/new": "newLocation"
+    "locations/new": "newLocation",
+    "locations/edit": "editLocation",
+    "locations/create": "createLocation",
+    "locations/:id": "show"
   },
   index: function(){
     this.before(function(){
-      try{
-        app.showView(new LocationIndexView({model: app.locations}));
-      }catch(e){
-        console.log(e)
-      }
-      
+      app.showView(new LocationIndexView({collection: app.locations}));
     });
   },
   show: function(id){
@@ -30,13 +27,29 @@ var QuickNav = Backbone.Router.extend({
   },
   newLocation: function(){
     this.before(function(){
-      app.showView(new NewLocationView());
+      app.showView(new NewLocationView());      
     });
+  },
+  createLocation: function(){
+    var location = new Location({name: $("#name").val(), address: $("#address").val()});
+    location.save([], {
+      success: function(){
+        app.navigate("", true);
+        app.locations.fetch();
+      },
+      error: function(x){
+        alert(x);
+      }
+    });
+  },
+  updateLocation: function(){
+    alert(name);
+    alert(address);
   },
   showView: function(view){
     if (this.currentView)
       this.currentView.close();
-    $('body').html(view.render().el);
+    $('#jqt').html(view.render().el);
     this.currentView = view;
     return view;
   },
