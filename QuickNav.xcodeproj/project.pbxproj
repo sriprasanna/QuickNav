@@ -38,6 +38,7 @@
 		9B21752A15276730009F3495 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B21752915276730009F3495 /* MainViewController.m */; };
 		9B21752C15276730009F3495 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B21752B15276730009F3495 /* MainViewController.xib */; };
 		9B21753015276730009F3495 /* verify.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9B21752F15276730009F3495 /* verify.sh */; };
+		9B217537152767AE009F3495 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 9B217536152767AE009F3495 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,10 +56,10 @@
 		9B2174F215276730009F3495 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9B2174F415276730009F3495 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9B2174F615276730009F3495 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		9B2174FA15276730009F3495 /* QuickNav-Info.plist */ = {isa = PBXFileReference; path = "QuickNav-Info.plist"; sourceTree = "<group>"; };
+		9B2174FA15276730009F3495 /* QuickNav-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuickNav-Info.plist"; sourceTree = "<group>"; };
 		9B2174FC15276730009F3495 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B2174FE15276730009F3495 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9B21750015276730009F3495 /* QuickNav-Prefix.pch */ = {isa = PBXFileReference; path = "QuickNav-Prefix.pch"; sourceTree = "<group>"; };
+		9B21750015276730009F3495 /* QuickNav-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickNav-Prefix.pch"; sourceTree = "<group>"; };
 		9B21750115276730009F3495 /* Cordova.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cordova.framework; path = /Users/Shared/Cordova/Frameworks/Cordova.framework; sourceTree = "<absolute>"; };
 		9B21750615276730009F3495 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B21750A15276730009F3495 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -71,13 +72,14 @@
 		9B21751E15276730009F3495 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
 		9B21752015276730009F3495 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		9B21752215276730009F3495 /* Cordova.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cordova.plist; sourceTree = "<group>"; };
-		9B21752515276730009F3495 /* AppDelegate.h */ = {isa = PBXFileReference; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		9B21752515276730009F3495 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		9B21752615276730009F3495 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		9B21752815276730009F3495 /* MainViewController.h */ = {isa = PBXFileReference; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
+		9B21752815276730009F3495 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		9B21752915276730009F3495 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		9B21752B15276730009F3495 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainViewController.xib; path = Classes/MainViewController.xib; sourceTree = "<group>"; };
-		9B21752E15276730009F3495 /* README */ = {isa = PBXFileReference; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		9B21752E15276730009F3495 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
 		9B21752F15276730009F3495 /* verify.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = verify.sh; sourceTree = "<group>"; };
+		9B217536152767AE009F3495 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		9B2174CC15276730009F3495 = {
 			isa = PBXGroup;
 			children = (
+				9B217536152767AE009F3495 /* www */,
 				9B2174F815276730009F3495 /* QuickNav */,
 				9B2174DD15276730009F3495 /* Frameworks */,
 				9B2174DB15276730009F3495 /* Products */,
@@ -329,6 +332,7 @@
 				9B21752315276730009F3495 /* Cordova.plist in Resources */,
 				9B21752C15276730009F3495 /* MainViewController.xib in Resources */,
 				9B21753015276730009F3495 /* verify.sh in Resources */,
+				9B217537152767AE009F3495 /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +472,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -498,6 +504,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = /Users/Shared/Cordova/Frameworks;
