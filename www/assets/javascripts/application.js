@@ -110,7 +110,20 @@ var QuickNav = Backbone.Router.extend({
   },
   newLocation: function(){
     this.before(function(){
-      app.showView(new NewLocationView());      
+      app.showView(new NewLocationView());
+      $("#fetchCurrentLocation").hammer().bind("tap", function(){
+        var $element = $(this);
+        $element.text("Fetching...");
+        navigator.geolocation.getCurrentPosition(function(position){
+          var latitude = position.coords.latitude,
+              longitude = position.coords.longitude;
+          $("#address").val(latitude + "," +longitude);
+          $element.text("Tag Current Location");
+        }, function(){
+          alert("Couldn't locate you!");
+          $element.text("Tag Current Location");
+        });
+      });
     });
   },
   createLocation: function(){
