@@ -37,7 +37,7 @@ var QuickNav = Backbone.Router.extend({
   },
   _bindTapEvents: function(){
     var $index = $("#index");
-    $("li:not(.search)", $index).hammer().bind("tap", function(){
+    $("li:not(.search)", $index).hammer().bind("mousedown", function(){
       var $selected = $(".selected", $index),
           $from     = $(".from.selected", $index),
           $to       = $(".to.selected", $index),
@@ -65,10 +65,8 @@ var QuickNav = Backbone.Router.extend({
         $to       = $(".to.selected", $index).data("id");
         window.setTimeout(function(){
           $selected.removeClass("from").removeClass("to").removeClass("selected");
-          window.setTimeout(function(){
-            app._openLocation($from, $to);
-          }, 500);
-        }, 1000);
+          app._openLocation($from, $to);
+        }, 500);
       };
     });
   },
@@ -85,7 +83,7 @@ var QuickNav = Backbone.Router.extend({
       $(this).closest('li').removeClass("selected from to");
     }).blur(function(){
       if (this.value.length > 0) {
-        $(this).closest('li').trigger('tap');
+        $(this).closest('li').trigger('mousedown');
       };
     });
   },
