@@ -65,7 +65,9 @@ var QuickNav = Backbone.Router.extend({
         $to       = $(".to.selected", $index).data("id");
         window.setTimeout(function(){
           $selected.removeClass("from").removeClass("to").removeClass("selected");
-          app._openLocation($from, $to);
+          window.setTimeout(function(){
+            app._openLocation($from, $to);
+          }, 500);
         }, 1000);
       };
     });
@@ -87,6 +89,21 @@ var QuickNav = Backbone.Router.extend({
       };
     });
   },
+  _bindCurrentLocationTagging: function(){
+    $("#fetchCurrentLocation").hammer().bind("tap", function(){
+      var $element = $(this);
+      $element.text("Fetching...");
+      navigator.geolocation.getCurrentPosition(function(position){
+        var latitude = position.coords.latitude,
+            longitude = position.coords.longitude;
+        $("#address").val(latitude + "," +longitude);
+        $element.text("Tag Current Location");
+      }, function(){
+        alert("Couldn't locate you!");
+        $element.text("Tag Current Location");
+      });
+    });
+  },
   index: function(){
     this.before(function(){
       app.showView(new LocationIndexView({collection: app.locations}));
@@ -94,13 +111,14 @@ var QuickNav = Backbone.Router.extend({
         app._bindTapEvents();
         app._bindSearch();
         app._bindQuickLocation();
-      }, 100);
+      }, 500);
     });
   },
   show: function(id){
     this.before(function(){
       var location = app.locations.get(id);
       app.showView(new LocationView({model: location}));
+      app._bindCurrentLocationTagging();
     });
   },
   editLocations: function(){
@@ -111,19 +129,7 @@ var QuickNav = Backbone.Router.extend({
   newLocation: function(){
     this.before(function(){
       app.showView(new NewLocationView());
-      $("#fetchCurrentLocation").hammer().bind("tap", function(){
-        var $element = $(this);
-        $element.text("Fetching...");
-        navigator.geolocation.getCurrentPosition(function(position){
-          var latitude = position.coords.latitude,
-              longitude = position.coords.longitude;
-          $("#address").val(latitude + "," +longitude);
-          $element.text("Tag Current Location");
-        }, function(){
-          alert("Couldn't locate you!");
-          $element.text("Tag Current Location");
-        });
-      });
+      app._bindCurrentLocationTagging();
     });
   },
   createLocation: function(){

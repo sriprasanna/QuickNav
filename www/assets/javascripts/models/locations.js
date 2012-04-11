@@ -76,9 +76,11 @@ _.extend(window.LocationDAO.prototype, {
                 "name VARCHAR(50), " +
                 "address TEXT)";
         tx.executeSql(sql);
-        tx.executeSql("INSERT INTO locations VALUES (1,'Home','dlf phase 5, gurgaon')");
-        tx.executeSql("INSERT INTO locations VALUES (2,'Work','dlf cyber city, gurgaon')");
-        tx.executeSql("INSERT INTO locations VALUES (3,'Gym','sahara mall, gurgaon')");
+        tx.executeSql("INSERT INTO locations VALUES (1,'Cafe Morrison','Cafe Morrison, South Ex, New Delhi')");
+        tx.executeSql("INSERT INTO locations VALUES (2,'Saravana Bhavan','Saravana Bhavan, Janpath, New Delhi')");
+        tx.executeSql("INSERT INTO locations VALUES (3,'Kunzum Cafe','Kunzum Cafe, Hauz Khas, New Delhi')");
+        tx.executeSql("INSERT INTO locations VALUES (4,'Nizamuddin Metro Station','Nizamuddin Metro Station, New Delhi')");
+        tx.executeSql("INSERT INTO locations VALUES (5,'IHC','India Habitat Center, New Delhi')");
       },
       function (tx, error) {
         alert('Transaction error - Creating tables ' + error);
