@@ -20,10 +20,10 @@ var QuickNav = Backbone.Router.extend({
     var locations = {from: from, to: to};
     $.each(["from", "to"], function(){
       switch(locations[this]){
-        case "0":
+        case 0:
           locations[this] = "Current Location";
           break;
-        case "null":
+        case null:
           locations[this] = $("#quick-search").val();
           $("#quick-search").val("");
           break;
@@ -37,7 +37,7 @@ var QuickNav = Backbone.Router.extend({
   },
   _bindTapEvents: function(){
     var $index = $("#index");
-    $("li:not(.search)", $index).tap(function(){
+    $("li:not(.search)", $index).hammer().bind("tap", function(){
       var $selected = $(".selected", $index),
           $from     = $(".from.selected", $index),
           $to       = $(".to.selected", $index),
@@ -90,9 +90,11 @@ var QuickNav = Backbone.Router.extend({
   index: function(){
     this.before(function(){
       app.showView(new LocationIndexView({collection: app.locations}));
-      app._bindTapEvents();
-      app._bindSearch();
-      app._bindQuickLocation();
+      window.setTimeout(function(){
+        app._bindTapEvents();
+        app._bindSearch();
+        app._bindQuickLocation();
+      }, 100);
     });
   },
   show: function(id){
