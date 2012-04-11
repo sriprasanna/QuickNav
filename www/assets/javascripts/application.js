@@ -66,7 +66,7 @@ var QuickNav = Backbone.Router.extend({
         window.setTimeout(function(){
           $selected.removeClass("from").removeClass("to").removeClass("selected");
           app._openLocation($from, $to);
-        }, 500);
+        }, 1000);
       };
     });
   },
